@@ -50,6 +50,7 @@ public class UserStepDefinition extends SetupService {
                 actor.asksFor(ReturnResponse.returnResponse())
         );
 
+
         User user = UserParser.toUser(userObject);
 
         // Realizar aserciones sobre los atributos del User

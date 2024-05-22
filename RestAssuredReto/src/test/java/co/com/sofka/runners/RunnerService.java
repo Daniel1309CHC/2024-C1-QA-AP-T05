@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         glue= {"co.com.sofka.stepsdefinitions","co.com.sofka.Hooks"},
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         plugin = "pretty",
-        tags = "@getUser"
+        tags = "@testpost"
 )
 public class RunnerService {
 }

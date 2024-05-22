@@ -5,7 +5,7 @@ import org.json.simple.JSONObject;
 
 public class PostParser {
 
-    public  static String postToJson(Post post) {
+    public static String postToJson(Post post) {
         // Crear un objeto JSONObject
         JSONObject jsonObject = new JSONObject();
 

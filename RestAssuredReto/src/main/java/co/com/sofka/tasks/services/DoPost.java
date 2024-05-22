@@ -4,6 +4,7 @@ import co.com.sofka.interactions.OurPost;
 import io.restassured.http.ContentType;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.rest.interactions.RestInteraction;
 
 import java.util.Map;
 
@@ -30,15 +31,27 @@ public class DoPost implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(
-                OurPost.resource(resource).with(
-                        requestSpecification -> requestSpecification
-                                //.contentType(ContentType.JSON)
-                                .headers(headers)
-                                .relaxedHTTPSValidation()
-                                .body(body)
-                )
+//        actor.attemptsTo(
+//                OurPost.resource(resource).with(
+//                        requestSpecification -> requestSpecification
+//                                //.contentType(ContentType.JSON)
+//                                .headers(headers)
+//                                .relaxedHTTPSValidation()
+//                                .body(body)
+//                )
+//        );
+
+        RestInteraction postBuilder = OurPost.resource(resource).with(
+                requestSpecification -> requestSpecification
+                        .relaxedHTTPSValidation()
+                        .body(body)
         );
+
+        if (headers != null && !headers.isEmpty()) {
+            postBuilder.with(requestSpecification -> requestSpecification.headers(headers));
+        }
+
+        actor.attemptsTo(postBuilder);
 
     }
 
