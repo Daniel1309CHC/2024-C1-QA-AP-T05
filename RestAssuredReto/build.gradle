@@ -1,0 +1,94 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "net.serenity-bdd:serenity-gradle-plugin:4.0.46"
+        classpath "net.serenity-bdd:serenity-single-page-report:4.0.46"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'idea'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.0.46'
+}
+
+//defaultTasks 'clean', 'test', 'aggregate'
+
+repositories {
+    mavenCentral()
+}
+
+group "co.com.sofka"
+version '1.0.0'
+setSourceCompatibility JavaVersion.VERSION_17
+setTargetCompatibility JavaVersion.VERSION_17
+
+
+ext {
+    slf4jVersion = '2.0.7'
+    serenityCoreVersion = '4.0.46'
+    serenityCucumberVersion = '4.0.46'
+    junitVersion = '5.10.0'
+    junitVintageVersion = '5.10.0'
+    junitPlatformVersion = '1.10.1'
+    assertJVersion = '3.24.2'
+    logbackVersion = '1.4.14'
+    jacksonAnnotations = '2.15.2'
+    lombokVersion = '1.18.22'
+    dataFakerVersion = '2.1.0'
+    serenityEnsureVersion = '3.9.7'
+    serenityRestVersion = '3.2.5'
+    seleniumDevToolsVersion = '4.12.1'
+}
+
+dependencies {
+    implementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-cucumber:${serenityCucumberVersion}",
+            "net.serenity-bdd:serenity-junit:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay-rest:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-ensure:${serenityEnsureVersion}",
+            "net.serenity-bdd:serenity-screenplay-rest:${serenityCoreVersion}",
+            group: 'org.json', name: 'json', version: '20231013',
+            "org.projectlombok:lombok:${lombokVersion}",
+            "ch.qos.logback:logback-classic:${logbackVersion}",
+            "com.fasterxml.jackson.core:jackson-annotations:${jacksonAnnotations}",
+            "org.assertj:assertj-core:${assertJVersion}",
+            "net.datafaker:datafaker:${dataFakerVersion}",
+            "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+            "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    implementation group: 'io.rest-assured', name: 'json-schema-validator', version: '4.3.3'
+    implementation group: 'com.codoid.products', name: 'fillo', version: '1.18'
+// Implementación se puede utilizar en cualquier parte
+    // lo que inicia con test en la carpeta test
+    testImplementation "org.slf4j:slf4j-simple:${slf4jVersion}",
+            "org.junit.platform:junit-platform-suite:${junitPlatformVersion}"
+
+
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+            "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
+            "org.junit.vintage:junit-vintage-engine:${junitVintageVersion}"
+
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-devtools-v114', version: "$seleniumDevToolsVersion"
+
+    testCompileOnly 'junit:junit:4.13.1'
+}
+test {
+    systemProperties System.getProperties()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)
