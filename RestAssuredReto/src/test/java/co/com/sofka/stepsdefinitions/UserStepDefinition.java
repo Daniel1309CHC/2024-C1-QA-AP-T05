@@ -5,7 +5,6 @@ import co.com.sofka.models.User;
 import co.com.sofka.questions.services.ResponseCode;
 import co.com.sofka.questions.services.ReturnResponse;
 import co.com.sofka.utils.jsonparser.UserParser;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,8 +12,8 @@ import org.json.simple.JSONObject;
 
 import java.util.List;
 
-import static co.com.sofka.ConstantesAssertions.Paths.SERVICE_USER;
-import static co.com.sofka.ConstantesAssertions.Paths.URL_BASE_JSON_PLACEHOLDER;
+import static co.com.sofka.Constantes.Paths.SERVICE_USER;
+import static co.com.sofka.Constantes.Paths.URL_BASE_JSON_PLACEHOLDER;
 import static co.com.sofka.tasks.services.DoGet.doGet;
 import static co.com.sofka.utils.jsonparser.JsonCommon.jsonToObject;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;

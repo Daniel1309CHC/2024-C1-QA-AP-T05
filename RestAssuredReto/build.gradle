@@ -65,6 +65,8 @@ dependencies {
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     implementation group: 'io.rest-assured', name: 'json-schema-validator', version: '4.3.3'
     implementation group: 'com.codoid.products', name: 'fillo', version: '1.18'
+    implementation 'org.jdom:jdom2:2.0.6.1'
+
 // Implementación se puede utilizar en cualquier parte
     // lo que inicia con test en la carpeta test
     testImplementation "org.slf4j:slf4j-simple:${slf4jVersion}",

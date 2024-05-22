@@ -7,10 +7,8 @@ import co.com.sofka.questions.services.ReturnResponse;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.json.simple.JSONObject;
 
-import static co.com.sofka.ConstantesAssertions.Paths.*;
-import static co.com.sofka.tasks.services.DoGet.doGet;
+import static co.com.sofka.Constantes.Paths.*;
 import static co.com.sofka.tasks.services.DoPost.doPost;
 import static co.com.sofka.utils.Util.crearPost;
 import static co.com.sofka.utils.jsonparser.JsonCommon.jsonToObject;

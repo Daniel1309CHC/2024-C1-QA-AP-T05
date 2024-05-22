@@ -1,4 +1,4 @@
-package co.com.sofka.ConstantesAssertions;
+package co.com.sofka.Constantes;
 
 public class LoginAssertions {
     public static String LOGED_USER = "You are logged in as %s";

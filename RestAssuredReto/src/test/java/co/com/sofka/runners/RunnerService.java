@@ -10,8 +10,7 @@ import org.junit.runner.RunWith;
         features="src/test/resources/features",
         glue= {"co.com.sofka.stepsdefinitions","co.com.sofka.Hooks"},
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        plugin = "pretty",
-        tags = "@testpost"
+        plugin = "pretty"
 )
 public class RunnerService {
 }
